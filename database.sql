@@ -6,7 +6,7 @@ CREATE SCHEMA IF NOT EXISTS `apis` DEFAULT CHARACTER SET latin1 ;
 USE `apis` ;
 
 -- -----------------------------------------------------
--- Table `restful_api_demo`.`user_login`
+-- Table `apis`.`user_login`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `apis`.`user_login` ;
 
@@ -21,11 +21,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `restful_api_demo`.`user_info`
+-- Table `apis`.`user_info`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `restful_api_demo`.`user_info` ;
 
-CREATE TABLE IF NOT EXISTS `restful_api_demo`.`user_info` (
+CREATE TABLE IF NOT EXISTS `apis`.`user_info` (
   `user_info_id` INT(70) NOT NULL AUTO_INCREMENT,
   `user_id_fk` INT(70) NOT NULL,
   `user_name` VARCHAR(45) NULL,
@@ -34,18 +34,18 @@ CREATE TABLE IF NOT EXISTS `restful_api_demo`.`user_info` (
   UNIQUE INDEX `user_id_fk_UNIQUE` (`user_id_fk` ASC),
   CONSTRAINT `user_info_foreign_key`
     FOREIGN KEY (`user_id_fk`)
-    REFERENCES `restful_api_demo`.`user_login` (`user_id`)
+    REFERENCES `apis`.`user_login` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `restful_api_demo`.`user_status`
+-- Table `apis`.`user_status`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restful_api_demo`.`user_status` ;
+DROP TABLE IF EXISTS `apis`.`user_status` ;
 
-CREATE TABLE IF NOT EXISTS `restful_api_demo`.`user_status` (
+CREATE TABLE IF NOT EXISTS `apis`.`user_status` (
   `user_status_id` INT(70) NOT NULL AUTO_INCREMENT,
   `user_id_fk` INT(70) NOT NULL,
   `status_text` TEXT NULL DEFAULT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `restful_api_demo`.`user_status` (
   UNIQUE INDEX `user_id_fk_UNIQUE` (`user_id_fk` ASC),
   CONSTRAINT `user_status_foreign_key`
     FOREIGN KEY (`user_id_fk`)
-    REFERENCES `restful_api_demo`.`user_login` (`user_id`)
+    REFERENCES `apis`.`user_login` (`user_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
